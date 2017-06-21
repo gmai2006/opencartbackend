@@ -125,47 +125,13 @@ public class DataImporter {
 		.collect(Collectors.toList());
 	}
 	
-	/**
-	 * `product_id` int(11) NOT NULL AUTO_INCREMENT,
-  `model` varchar(64) NOT NULL,
-  `sku` varchar(64) NOT NULL,
-  `upc` varchar(12) NOT NULL,
-  `ean` varchar(14) NOT NULL,
-  `jan` varchar(13) NOT NULL,
-  `isbn` varchar(17) NOT NULL,
-  `mpn` varchar(64) NOT NULL,
-  `location` varchar(128) NOT NULL,
-  `quantity` int(4) NOT NULL DEFAULT '0',
-  `stock_status_id` int(11) NOT NULL,
-  `image` varchar(255) DEFAULT NULL,
-  `manufacturer_id` int(11) NOT NULL,
-  `shipping` tinyint(1) NOT NULL DEFAULT '1',
-  `price` decimal(15,4) NOT NULL DEFAULT '0.0000',
-  `points` int(8) NOT NULL DEFAULT '0',
-  `tax_class_id` int(11) NOT NULL,
-  `date_available` date NOT NULL DEFAULT '0000-00-00',
-  `weight` decimal(15,8) NOT NULL DEFAULT '0.00000000',
-  `weight_class_id` int(11) NOT NULL DEFAULT '0',
-  `length` decimal(15,8) NOT NULL DEFAULT '0.00000000',
-  `width` decimal(15,8) NOT NULL DEFAULT '0.00000000',
-  `height` decimal(15,8) NOT NULL DEFAULT '0.00000000',
-  `length_class_id` int(11) NOT NULL DEFAULT '0',
-  `subtract` tinyint(1) NOT NULL DEFAULT '1',
-  `minimum` int(11) NOT NULL DEFAULT '1',
-  `sort_order` int(11) NOT NULL DEFAULT '0',
-  `status` tinyint(1) NOT NULL DEFAULT '0',
-  `viewed` int(5) NOT NULL DEFAULT '0',
-  `date_added` datetime NOT NULL,
-  `date_modified` datetime NOT NULL,
-  PRIMARY KEY (`product_id`)
-	 */
 	private OcProduct createProduct(File name) {
 		
 		logger.info("Start creatingp product " + name);
 		
 		Date d = new Date();
 		OcProduct product = new OcProduct();
-		product.setModel(generateName(name));
+		product.setModel(DAOUtils.generateName(name));
 		product.setUpc("");
 		product.setEan("");
 		product.setJan("");
@@ -193,20 +159,6 @@ public class DataImporter {
 		return product;
 	}
 	
-	/**
-	 * `product_id` int(11) NOT NULL,
-  `language_id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `description` text NOT NULL,
-  `tag` text NOT NULL,
-  `meta_title` varchar(255) NOT NULL,
-  `meta_description` varchar(255) NOT NULL,
-  `meta_keyword` varchar(255) NOT NULL,
-  PRIMARY KEY (`product_id`,`language_id`),
-  KEY `name` (`name`)
-	 * @param product
-	 * @return
-	 */
 	private OcProduct createProductDescr(OcProduct product) {
 		OcProductDescription productDesc = new OcProductDescription();
 		productDesc.setProductId(product.getProductId());
@@ -231,8 +183,9 @@ public class DataImporter {
 	}
 	
 	private OcProduct createProductSpecial(OcProduct cat) {
-		Date d = new Date();
-		Date future = new Date(System.currentTimeMillis() + 72000);
+		long month = 30*24*3600;
+		Date d = new Date(System.currentTimeMillis() - month);
+		Date future = new Date(System.currentTimeMillis() + month);
 		OcProductSpecial special = new OcProductSpecial();
 		special.setProductId(cat.getProductId());
 		special.setCustomerGroupId(1);
@@ -257,10 +210,10 @@ public class DataImporter {
 	private void createProduct2Category(List<OcProduct> products
 			, List<OcCategory> categories
 			, File associationFile)  {
-		final Map<String, Integer> mapproducts = buildProductMap(products);
-		final Map<String, Integer> mapcat = buildCategoryMap(categories);
+		final Map<String, Integer> mapproducts = DAOUtils.buildProductMap(products);
+		final Map<String, Integer> mapcat = DAOUtils.buildCategoryMap(categories);
 		
-		Map<String, String> assoc = readProperties(associationFile);
+		Map<String, String> assoc = DAOUtils.readProperties(associationFile);
 		System.out.println("Start searching for product " + assoc.toString());
 		assoc.keySet().stream().forEach(key -> {
 			
@@ -300,39 +253,7 @@ public class DataImporter {
 		})
 		.collect(Collectors.toList());
 	}
-	
-	private Map<String, String> readProperties(File file) {
-		Properties properties = new Properties();
-		try {
-			properties.load(new BufferedReader(new FileReader(file)));
-		} catch (Exception ex) { ex.printStackTrace();}
 		
-
-		Map<String, String> map = properties.entrySet().stream().collect(
-			    Collectors.toMap(
-			        e -> (String) e.getKey(),
-			        e -> (String) e.getValue()
-			    ));
-		return map;
-	}
-	
-	private Map<String, Integer> buildProductMap(List<OcProduct> products) {
-		return products.stream()
-		.collect(Collectors.toMap(
-				e -> (String) e.getModel().toLowerCase(),
-				e -> (Integer) e.getProductId()
-			));
-	}
-	
-	private Map<String, Integer> buildCategoryMap(List<OcCategory> categories) {
-		return categories
-				.stream()
-				.collect(Collectors.toMap(
-			e -> (String) e.getImage(),
-			e -> (Integer) e.getCategoryId()
-		));
-	}
-	
 	public static void main(String[] args) {
 		DataImporter etl = new DataImporter();
 		
@@ -360,18 +281,5 @@ public class DataImporter {
 		System.exit(0);
 	}
 	
-	private static String generateName(File file) {
-		StringBuilder builder = new StringBuilder();
-		String[] tokens = file.getName().split("_");
-		
-		Arrays.asList(tokens).stream()
-		.forEach(s -> {
-			builder.append(s.substring(0, 1).toUpperCase() 
-					+ s.substring(1).toLowerCase()
-					+ " ");
-		});
-		
-		return builder.toString();
-	}
 
 }
