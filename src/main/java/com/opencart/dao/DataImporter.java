@@ -6,6 +6,9 @@ import java.io.FileReader;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -183,9 +186,11 @@ public class DataImporter {
 	}
 	
 	private OcProduct createProductSpecial(OcProduct cat) {
-		long month = 30*24*3600;
-		Date d = new Date(System.currentTimeMillis() - month);
-		Date future = new Date(System.currentTimeMillis() + month);
+		LocalDate date2016 = LocalDate.of(2016, Month.FEBRUARY, 10);
+		LocalDate date2018 = LocalDate.of(2018, Month.FEBRUARY, 10);
+		
+		Date d = Date.from(date2016.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		Date future = Date.from(date2018.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		OcProductSpecial special = new OcProductSpecial();
 		special.setProductId(cat.getProductId());
 		special.setCustomerGroupId(1);
