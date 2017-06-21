@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0">
+  <persistence-unit name="ovr">
+    <properties>
+      <property name="openjpa.ConnectionURL" value="jdbc:mysql://localhost:3306/opencart"/>
+      <property name="openjpa.ConnectionDriverName" value="com.mysql.jdbc.Driver"/>
+      <property name="openjpa.ConnectionUserName" value="opencart_ower"/>
+      <property name="openjpa.ConnectionPassword" value="$eattle2006$$"/>
+      <property name="openjpa.Log" value="DefaultLevel=WARN, Tool=INFO"/>
+    </properties>
+  </persistence-unit>
+</persistence>

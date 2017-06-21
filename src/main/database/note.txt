@@ -1,0 +1,10 @@
+
+java -jar $DERBY_HOME/lib/derbyrun.jar server start & > ~/dblog.txt
+
+https://stackoverflow.com/questions/5972659/is-there-any-command-line-tool-that-can-generate-java-entity-classes-from-db-no/29519703#29519703
+
+#generate entity
+java -cp openjpa-all-2.3.0.jar org.apache.openjpa.jdbc.meta.ReverseMappingTool -properties openjpa.xml -metadata none -annotations true -nullableAsObject true -useGenericCollections true -pkg {your package} -directory {output directory} schema.xml
+
+#generate schema
+java -cp openjpa-all-2.3.0.jar;sqljdbc4.jar org.apache.openjpa.jdbc.schema.SchemaTool -properties openjpa.xml -action reflect -file schema.xml

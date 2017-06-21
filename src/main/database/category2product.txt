@@ -1,0 +1,15 @@
+Birthday=birthday
+Graduation=graduation
+Holidays=christmas
+Christmas=christmas
+Halloween=halloween
+Wedding=wedding
+Nature=flower,
+Animal=bird,butterfly,butterflies,elephant,pelican
+Thank\u0020you=thankyou
+Father\u0020Day=fatherday
+Mother\u0020Day=motherday
+Congratulation=congratulation
+Valentine=love
+Baby=baby
+Scenary=seattle

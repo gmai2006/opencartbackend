@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+        http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+	version="1.0">
+ <!-- 
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+  version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+   -->
+	
+	<persistence-unit name="test" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>oc_address</class>
+<class>oc_affiliate</class>
+<class>oc_affiliate_activity</class>
+<class>oc_affiliate_login</class>
+<class>oc_affiliate_transaction</class>
+<class>oc_api</class>
+<class>oc_api_ip</class>
+<class>oc_api_session</class>
+<class>oc_attribute</class>
+<class>oc_attribute_description</class>
+<class>oc_attribute_group</class>
+<class>oc_attribute_group_description</class>
+<class>oc_banner</class>
+<class>oc_banner_image</class>
+<class>oc_cart</class>
+<class>oc_category</class>
+<class>oc_category_description</class>
+<class>oc_category_filter</class>
+<class>oc_category_path</class>
+<class>oc_category_to_layout</class>
+<class>oc_category_to_store</class>
+<class>oc_country</class>
+<class>oc_coupon</class>
+<class>oc_coupon_category</class>
+<class>oc_coupon_history</class>
+<class>oc_coupon_product</class>
+<class>oc_currency</class>
+<class>oc_custom_field</class>
+<class>oc_custom_field_customer_group</class>
+<class>oc_custom_field_description</class>
+<class>oc_custom_field_value</class>
+<class>oc_custom_field_value_description</class>
+<class>oc_customer</class>
+<class>oc_customer_activity</class>
+<class>oc_customer_group</class>
+<class>oc_customer_group_description</class>
+<class>oc_customer_history</class>
+<class>oc_customer_ip</class>
+<class>oc_customer_login</class>
+<class>oc_customer_online</class>
+<class>oc_customer_reward</class>
+<class>oc_customer_search</class>
+<class>oc_customer_transaction</class>
+<class>oc_customer_wishlist</class>
+<class>oc_download</class>
+<class>oc_download_description</class>
+<class>oc_event</class>
+<class>oc_extension</class>
+<class>oc_filter</class>
+<class>oc_filter_description</class>
+<class>oc_filter_group</class>
+<class>oc_filter_group_description</class>
+<class>oc_geo_zone</class>
+<class>oc_information</class>
+<class>oc_information_description</class>
+<class>oc_information_to_layout</class>
+<class>oc_information_to_store</class>
+<class>oc_language</class>
+<class>oc_layout</class>
+<class>oc_layout_module</class>
+<class>oc_layout_route</class>
+<class>oc_length_class</class>
+<class>oc_length_class_description</class>
+<class>oc_location</class>
+<class>oc_manufacturer</class>
+<class>oc_manufacturer_to_store</class>
+<class>oc_marketing</class>
+<class>oc_menu</class>
+<class>oc_menu_description</class>
+<class>oc_menu_module</class>
+<class>oc_modification</class>
+<class>oc_module</class>
+<class>oc_option</class>
+<class>oc_option_description</class>
+<class>oc_option_value</class>
+<class>oc_option_value_description</class>
+<class>oc_order</class>
+<class>oc_order_custom_field</class>
+<class>oc_order_history</class>
+<class>oc_order_option</class>
+<class>oc_order_product</class>
+<class>oc_order_recurring</class>
+<class>oc_order_recurring_transaction</class>
+<class>oc_order_status</class>
+<class>oc_order_total</class>
+<class>oc_order_voucher</class>
+<class>oc_product</class>
+<class>oc_product_attribute</class>
+<class>oc_product_description</class>
+<class>oc_product_discount</class>
+<class>oc_product_filter</class>
+<class>oc_product_image</class>
+<class>oc_product_option</class>
+<class>oc_product_option_value</class>
+<class>oc_product_recurring</class>
+<class>oc_product_related</class>
+<class>oc_product_reward</class>
+<class>oc_product_special</class>
+<class>oc_product_to_category</class>
+<class>oc_product_to_download</class>
+<class>oc_product_to_layout</class>
+<class>oc_product_to_store</class>
+<class>oc_recurring</class>
+<class>oc_recurring_description</class>
+<class>oc_return</class>
+<class>oc_return_action</class>
+<class>oc_return_history</class>
+<class>oc_return_reason</class>
+<class>oc_return_status</class>
+<class>oc_review</class>
+<class>oc_setting</class>
+<class>oc_stock_status</class>
+<class>oc_store</class>
+<class>oc_tax_class</class>
+<class>oc_tax_rate</class>
+<class>oc_tax_rate_to_customer_group</class>
+<class>oc_tax_rule</class>
+<class>oc_theme</class>
+<class>oc_translation</class>
+<class>oc_upload</class>
+<class>oc_url_alias</class>
+<class>oc_user</class>
+<class>oc_user_group</class>
+<class>oc_voucher</class>
+<class>oc_voucher_history</class>
+<class>oc_voucher_theme</class>
+<class>oc_voucher_theme_description</class>
+<class>oc_weight_class</class>
+<class>oc_weight_class_description</class>
+<class>oc_zone</class>
+<class>oc_zone_to_geo_zone</class>
+		<!-- JPA entities must be registered here -->
+		
+		
+		<properties>
+			<property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"></property>
+			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/opencart2?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"></property>
+			<property name="hibernate.connection.username" value="greetingcard_owner"></property>
+			<property name="hibernate.connection.password" value="$eattle2006$$"></property>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"></property>
+			<property name="hibernate.show_sql" value="true"/>
+		</properties>
+	</persistence-unit>
+
+</persistence>

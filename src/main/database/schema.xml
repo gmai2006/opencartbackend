@@ -1,0 +1,1368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemas>
+    <schema>
+        <table name="oc_address">
+            <pk name="PRIMARY" column="address_id"/>
+            <column name="address_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="customer_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="firstname" type="varchar" not-null="true" size="32"/>
+            <column name="lastname" type="varchar" not-null="true" size="32"/>
+            <column name="company" type="varchar" not-null="true" size="40"/>
+            <column name="address_1" type="varchar" not-null="true" size="128"/>
+            <column name="address_2" type="varchar" not-null="true" size="128"/>
+            <column name="city" type="varchar" not-null="true" size="128"/>
+            <column name="postcode" type="varchar" not-null="true" size="10"/>
+            <column name="country_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="zone_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="custom_field" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <index name="customer_id" column="customer_id"/>
+        </table>
+        <table name="oc_affiliate">
+            <pk name="PRIMARY" column="affiliate_id"/>
+            <column name="affiliate_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="firstname" type="varchar" not-null="true" size="32"/>
+            <column name="lastname" type="varchar" not-null="true" size="32"/>
+            <column name="email" type="varchar" not-null="true" size="96"/>
+            <column name="telephone" type="varchar" not-null="true" size="32"/>
+            <column name="fax" type="varchar" not-null="true" size="32"/>
+            <column name="password" type="varchar" not-null="true" size="40"/>
+            <column name="salt" type="varchar" not-null="true" size="9"/>
+            <column name="company" type="varchar" not-null="true" size="40"/>
+            <column name="website" type="varchar" not-null="true" size="255"/>
+            <column name="address_1" type="varchar" not-null="true" size="128"/>
+            <column name="address_2" type="varchar" not-null="true" size="128"/>
+            <column name="city" type="varchar" not-null="true" size="128"/>
+            <column name="postcode" type="varchar" not-null="true" size="10"/>
+            <column name="country_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="zone_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="code" type="varchar" not-null="true" size="64"/>
+            <column name="commission" type="decimal" not-null="true" default="0.00" size="4" decimal-digits="2"/>
+            <column name="tax" type="varchar" not-null="true" size="64"/>
+            <column name="payment" type="varchar" not-null="true" size="6"/>
+            <column name="cheque" type="varchar" not-null="true" size="100"/>
+            <column name="paypal" type="varchar" not-null="true" size="64"/>
+            <column name="bank_name" type="varchar" not-null="true" size="64"/>
+            <column name="bank_branch_number" type="varchar" not-null="true" size="64"/>
+            <column name="bank_swift_code" type="varchar" not-null="true" size="64"/>
+            <column name="bank_account_name" type="varchar" not-null="true" size="64"/>
+            <column name="bank_account_number" type="varchar" not-null="true" size="64"/>
+            <column name="ip" type="varchar" not-null="true" size="40"/>
+            <column name="status" type="bit" not-null="true"/>
+            <column name="approved" type="bit" not-null="true"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_affiliate_activity">
+            <pk name="PRIMARY" column="affiliate_activity_id"/>
+            <column name="affiliate_activity_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="affiliate_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="key" type="varchar" not-null="true" size="64"/>
+            <column name="data" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="ip" type="varchar" not-null="true" size="40"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_affiliate_login">
+            <pk name="PRIMARY" column="affiliate_login_id"/>
+            <column name="affiliate_login_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="email" type="varchar" not-null="true" size="96"/>
+            <column name="ip" type="varchar" not-null="true" size="40"/>
+            <column name="total" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+            <column name="date_modified" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+            <index name="email" column="email"/>
+            <index name="ip" column="ip"/>
+        </table>
+        <table name="oc_affiliate_transaction">
+            <pk name="PRIMARY" column="affiliate_transaction_id"/>
+            <column name="affiliate_transaction_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="affiliate_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="order_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="description" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="amount" type="decimal" not-null="true" size="15" decimal-digits="4"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_api">
+            <pk name="PRIMARY" column="api_id"/>
+            <column name="api_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="64"/>
+            <column name="key" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="status" type="bit" not-null="true"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+            <column name="date_modified" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_api_ip">
+            <pk name="PRIMARY" column="api_ip_id"/>
+            <column name="api_ip_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="api_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="ip" type="varchar" not-null="true" size="40"/>
+        </table>
+        <table name="oc_api_session">
+            <pk name="PRIMARY" column="api_session_id"/>
+            <column name="api_session_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="api_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="token" type="varchar" not-null="true" size="32"/>
+            <column name="session_id" type="varchar" not-null="true" size="32"/>
+            <column name="session_name" type="varchar" not-null="true" size="32"/>
+            <column name="ip" type="varchar" not-null="true" size="40"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+            <column name="date_modified" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_attribute">
+            <pk name="PRIMARY" column="attribute_id"/>
+            <column name="attribute_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="attribute_group_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="sort_order" type="integer" type-name="INT" not-null="true" size="10"/>
+        </table>
+        <table name="oc_attribute_description">
+            <pk name="PRIMARY">
+                <on column="attribute_id"/>
+                <on column="language_id"/>
+            </pk>
+            <column name="attribute_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="language_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="64"/>
+        </table>
+        <table name="oc_attribute_group">
+            <pk name="PRIMARY" column="attribute_group_id"/>
+            <column name="attribute_group_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="sort_order" type="integer" type-name="INT" not-null="true" size="10"/>
+        </table>
+        <table name="oc_attribute_group_description">
+            <pk name="PRIMARY">
+                <on column="attribute_group_id"/>
+                <on column="language_id"/>
+            </pk>
+            <column name="attribute_group_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="language_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="64"/>
+        </table>
+        <table name="oc_banner">
+            <pk name="PRIMARY" column="banner_id"/>
+            <column name="banner_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="64"/>
+            <column name="status" type="bit" not-null="true"/>
+        </table>
+        <table name="oc_banner_image">
+            <pk name="PRIMARY" column="banner_image_id"/>
+            <column name="banner_image_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="banner_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="language_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="title" type="varchar" not-null="true" size="64"/>
+            <column name="link" type="varchar" not-null="true" size="255"/>
+            <column name="image" type="varchar" not-null="true" size="255"/>
+            <column name="sort_order" type="integer" type-name="INT" not-null="true" size="10"/>
+        </table>
+        <table name="oc_cart">
+            <pk name="PRIMARY" column="cart_id"/>
+            <column name="cart_id" type="integer" type-name="INT UNSIGNED" not-null="true" size="10"/>
+            <column name="api_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="customer_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="session_id" type="varchar" not-null="true" size="32"/>
+            <column name="product_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="recurring_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="option" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="quantity" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+            <index name="cart_id">
+                <on column="api_id"/>
+                <on column="customer_id"/>
+                <on column="session_id"/>
+                <on column="product_id"/>
+                <on column="recurring_id"/>
+            </index>
+        </table>
+        <table name="oc_category">
+            <pk name="PRIMARY" column="category_id"/>
+            <column name="category_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="image" type="varchar" size="255"/>
+            <column name="parent_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="top" type="bit" not-null="true"/>
+            <column name="column" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="sort_order" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="status" type="bit" not-null="true"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+            <column name="date_modified" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+            <index name="parent_id" column="parent_id"/>
+        </table>
+        <table name="oc_category_description">
+            <pk name="PRIMARY">
+                <on column="category_id"/>
+                <on column="language_id"/>
+            </pk>
+            <column name="category_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="language_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="255"/>
+            <column name="description" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="meta_title" type="varchar" not-null="true" size="255"/>
+            <column name="meta_description" type="varchar" not-null="true" size="255"/>
+            <column name="meta_keyword" type="varchar" not-null="true" size="255"/>
+            <index name="name" column="name"/>
+        </table>
+        <table name="oc_category_filter">
+            <pk name="PRIMARY">
+                <on column="category_id"/>
+                <on column="filter_id"/>
+            </pk>
+            <column name="category_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="filter_id" type="integer" type-name="INT" not-null="true" size="10"/>
+        </table>
+        <table name="oc_category_path">
+            <pk name="PRIMARY">
+                <on column="category_id"/>
+                <on column="path_id"/>
+            </pk>
+            <column name="category_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="path_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="level" type="integer" type-name="INT" not-null="true" size="10"/>
+        </table>
+        <table name="oc_category_to_layout">
+            <pk name="PRIMARY">
+                <on column="category_id"/>
+                <on column="store_id"/>
+            </pk>
+            <column name="category_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="store_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="layout_id" type="integer" type-name="INT" not-null="true" size="10"/>
+        </table>
+        <table name="oc_category_to_store">
+            <pk name="PRIMARY">
+                <on column="category_id"/>
+                <on column="store_id"/>
+            </pk>
+            <column name="category_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="store_id" type="integer" type-name="INT" not-null="true" size="10"/>
+        </table>
+        <table name="oc_country">
+            <pk name="PRIMARY" column="country_id"/>
+            <column name="country_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="128"/>
+            <column name="iso_code_2" type="varchar" not-null="true" size="2"/>
+            <column name="iso_code_3" type="varchar" not-null="true" size="3"/>
+            <column name="address_format" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="postcode_required" type="bit" not-null="true"/>
+            <column name="status" type="bit" not-null="true" default="1"/>
+        </table>
+        <table name="oc_coupon">
+            <pk name="PRIMARY" column="coupon_id"/>
+            <column name="coupon_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="128"/>
+            <column name="code" type="varchar" not-null="true" size="20"/>
+            <column name="type" type="char" not-null="true" size="1"/>
+            <column name="discount" type="decimal" not-null="true" size="15" decimal-digits="4"/>
+            <column name="logged" type="bit" not-null="true"/>
+            <column name="shipping" type="bit" not-null="true"/>
+            <column name="total" type="decimal" not-null="true" size="15" decimal-digits="4"/>
+            <column name="date_start" type="date" not-null="true" default="0000-00-00" size="10"/>
+            <column name="date_end" type="date" not-null="true" default="0000-00-00" size="10"/>
+            <column name="uses_total" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="uses_customer" type="varchar" not-null="true" size="11"/>
+            <column name="status" type="bit" not-null="true"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_coupon_category">
+            <pk name="PRIMARY">
+                <on column="category_id"/>
+                <on column="coupon_id"/>
+            </pk>
+            <column name="coupon_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="category_id" type="integer" type-name="INT" not-null="true" size="10"/>
+        </table>
+        <table name="oc_coupon_history">
+            <pk name="PRIMARY" column="coupon_history_id"/>
+            <column name="coupon_history_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="coupon_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="order_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="customer_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="amount" type="decimal" not-null="true" size="15" decimal-digits="4"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_coupon_product">
+            <pk name="PRIMARY" column="coupon_product_id"/>
+            <column name="coupon_product_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="coupon_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="product_id" type="integer" type-name="INT" not-null="true" size="10"/>
+        </table>
+        <table name="oc_currency">
+            <pk name="PRIMARY" column="currency_id"/>
+            <column name="currency_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="title" type="varchar" not-null="true" size="32"/>
+            <column name="code" type="varchar" not-null="true" size="3"/>
+            <column name="symbol_left" type="varchar" not-null="true" size="12"/>
+            <column name="symbol_right" type="varchar" not-null="true" size="12"/>
+            <column name="decimal_place" type="char" not-null="true" size="1"/>
+            <column name="value" type="real" type-name="FLOAT" not-null="true" size="15" decimal-digits="8"/>
+            <column name="status" type="bit" not-null="true"/>
+            <column name="date_modified" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_custom_field">
+            <pk name="PRIMARY" column="custom_field_id"/>
+            <column name="custom_field_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="type" type="varchar" not-null="true" size="32"/>
+            <column name="value" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="validation" type="varchar" not-null="true" size="255"/>
+            <column name="location" type="varchar" not-null="true" size="7"/>
+            <column name="status" type="bit" not-null="true"/>
+            <column name="sort_order" type="integer" type-name="INT" not-null="true" size="10"/>
+        </table>
+        <table name="oc_custom_field_customer_group">
+            <pk name="PRIMARY">
+                <on column="custom_field_id"/>
+                <on column="customer_group_id"/>
+            </pk>
+            <column name="custom_field_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="customer_group_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="required" type="bit" not-null="true"/>
+        </table>
+        <table name="oc_custom_field_description">
+            <pk name="PRIMARY">
+                <on column="custom_field_id"/>
+                <on column="language_id"/>
+            </pk>
+            <column name="custom_field_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="language_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="128"/>
+        </table>
+        <table name="oc_custom_field_value">
+            <pk name="PRIMARY" column="custom_field_value_id"/>
+            <column name="custom_field_value_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="custom_field_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="sort_order" type="integer" type-name="INT" not-null="true" size="10"/>
+        </table>
+        <table name="oc_custom_field_value_description">
+            <pk name="PRIMARY">
+                <on column="custom_field_value_id"/>
+                <on column="language_id"/>
+            </pk>
+            <column name="custom_field_value_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="language_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="custom_field_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="128"/>
+        </table>
+        <table name="oc_customer">
+            <pk name="PRIMARY" column="customer_id"/>
+            <column name="customer_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="customer_group_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="store_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="language_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="firstname" type="varchar" not-null="true" size="32"/>
+            <column name="lastname" type="varchar" not-null="true" size="32"/>
+            <column name="email" type="varchar" not-null="true" size="96"/>
+            <column name="telephone" type="varchar" not-null="true" size="32"/>
+            <column name="fax" type="varchar" not-null="true" size="32"/>
+            <column name="password" type="varchar" not-null="true" size="40"/>
+            <column name="salt" type="varchar" not-null="true" size="9"/>
+            <column name="cart" type="longvarchar" type-name="TEXT" size="65535"/>
+            <column name="wishlist" type="longvarchar" type-name="TEXT" size="65535"/>
+            <column name="newsletter" type="bit" not-null="true"/>
+            <column name="address_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="custom_field" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="ip" type="varchar" not-null="true" size="40"/>
+            <column name="status" type="bit" not-null="true"/>
+            <column name="approved" type="bit" not-null="true"/>
+            <column name="safe" type="bit" not-null="true"/>
+            <column name="token" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="code" type="varchar" not-null="true" size="40"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_customer_activity">
+            <pk name="PRIMARY" column="customer_activity_id"/>
+            <column name="customer_activity_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="customer_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="key" type="varchar" not-null="true" size="64"/>
+            <column name="data" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="ip" type="varchar" not-null="true" size="40"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_customer_group">
+            <pk name="PRIMARY" column="customer_group_id"/>
+            <column name="customer_group_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="approval" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="sort_order" type="integer" type-name="INT" not-null="true" size="10"/>
+        </table>
+        <table name="oc_customer_group_description">
+            <pk name="PRIMARY">
+                <on column="customer_group_id"/>
+                <on column="language_id"/>
+            </pk>
+            <column name="customer_group_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="language_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="32"/>
+            <column name="description" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+        </table>
+        <table name="oc_customer_history">
+            <pk name="PRIMARY" column="customer_history_id"/>
+            <column name="customer_history_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="customer_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="comment" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_customer_ip">
+            <pk name="PRIMARY" column="customer_ip_id"/>
+            <column name="customer_ip_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="customer_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="ip" type="varchar" not-null="true" size="40"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+            <index name="ip" column="ip"/>
+        </table>
+        <table name="oc_customer_login">
+            <pk name="PRIMARY" column="customer_login_id"/>
+            <column name="customer_login_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="email" type="varchar" not-null="true" size="96"/>
+            <column name="ip" type="varchar" not-null="true" size="40"/>
+            <column name="total" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+            <column name="date_modified" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+            <index name="email" column="email"/>
+            <index name="ip" column="ip"/>
+        </table>
+        <table name="oc_customer_online">
+            <pk name="PRIMARY" column="ip"/>
+            <column name="ip" type="varchar" not-null="true" size="40"/>
+            <column name="customer_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="url" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="referer" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_customer_reward">
+            <pk name="PRIMARY" column="customer_reward_id"/>
+            <column name="customer_reward_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="customer_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="order_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="description" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="points" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_customer_search">
+            <pk name="PRIMARY" column="customer_search_id"/>
+            <column name="customer_search_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="store_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="language_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="customer_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="keyword" type="varchar" not-null="true" size="255"/>
+            <column name="category_id" type="integer" type-name="INT" size="10"/>
+            <column name="sub_category" type="bit" not-null="true"/>
+            <column name="description" type="bit" not-null="true"/>
+            <column name="products" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="ip" type="varchar" not-null="true" size="40"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_customer_transaction">
+            <pk name="PRIMARY" column="customer_transaction_id"/>
+            <column name="customer_transaction_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="customer_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="order_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="description" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="amount" type="decimal" not-null="true" size="15" decimal-digits="4"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_customer_wishlist">
+            <pk name="PRIMARY">
+                <on column="customer_id"/>
+                <on column="product_id"/>
+            </pk>
+            <column name="customer_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="product_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_download">
+            <pk name="PRIMARY" column="download_id"/>
+            <column name="download_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="filename" type="varchar" not-null="true" size="160"/>
+            <column name="mask" type="varchar" not-null="true" size="128"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_download_description">
+            <pk name="PRIMARY">
+                <on column="download_id"/>
+                <on column="language_id"/>
+            </pk>
+            <column name="download_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="language_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="64"/>
+        </table>
+        <table name="oc_event">
+            <pk name="PRIMARY" column="event_id"/>
+            <column name="event_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="code" type="varchar" not-null="true" size="32"/>
+            <column name="trigger" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="action" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="status" type="bit" not-null="true"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_extension">
+            <pk name="PRIMARY" column="extension_id"/>
+            <column name="extension_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="type" type="varchar" not-null="true" size="32"/>
+            <column name="code" type="varchar" not-null="true" size="32"/>
+        </table>
+        <table name="oc_filter">
+            <pk name="PRIMARY" column="filter_id"/>
+            <column name="filter_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="filter_group_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="sort_order" type="integer" type-name="INT" not-null="true" size="10"/>
+        </table>
+        <table name="oc_filter_description">
+            <pk name="PRIMARY">
+                <on column="filter_id"/>
+                <on column="language_id"/>
+            </pk>
+            <column name="filter_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="language_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="filter_group_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="64"/>
+        </table>
+        <table name="oc_filter_group">
+            <pk name="PRIMARY" column="filter_group_id"/>
+            <column name="filter_group_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="sort_order" type="integer" type-name="INT" not-null="true" size="10"/>
+        </table>
+        <table name="oc_filter_group_description">
+            <pk name="PRIMARY">
+                <on column="filter_group_id"/>
+                <on column="language_id"/>
+            </pk>
+            <column name="filter_group_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="language_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="64"/>
+        </table>
+        <table name="oc_geo_zone">
+            <pk name="PRIMARY" column="geo_zone_id"/>
+            <column name="geo_zone_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="32"/>
+            <column name="description" type="varchar" not-null="true" size="255"/>
+            <column name="date_modified" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_information">
+            <pk name="PRIMARY" column="information_id"/>
+            <column name="information_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="bottom" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="sort_order" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="status" type="bit" not-null="true" default="1"/>
+        </table>
+        <table name="oc_information_description">
+            <pk name="PRIMARY">
+                <on column="information_id"/>
+                <on column="language_id"/>
+            </pk>
+            <column name="information_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="language_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="title" type="varchar" not-null="true" size="64"/>
+            <column name="description" type="longvarchar" type-name="MEDIUMTEXT" not-null="true" size="16777215"/>
+            <column name="meta_title" type="varchar" not-null="true" size="255"/>
+            <column name="meta_description" type="varchar" not-null="true" size="255"/>
+            <column name="meta_keyword" type="varchar" not-null="true" size="255"/>
+        </table>
+        <table name="oc_information_to_layout">
+            <pk name="PRIMARY">
+                <on column="information_id"/>
+                <on column="store_id"/>
+            </pk>
+            <column name="information_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="store_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="layout_id" type="integer" type-name="INT" not-null="true" size="10"/>
+        </table>
+        <table name="oc_information_to_store">
+            <pk name="PRIMARY">
+                <on column="information_id"/>
+                <on column="store_id"/>
+            </pk>
+            <column name="information_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="store_id" type="integer" type-name="INT" not-null="true" size="10"/>
+        </table>
+        <table name="oc_language">
+            <pk name="PRIMARY" column="language_id"/>
+            <column name="language_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="32"/>
+            <column name="code" type="varchar" not-null="true" size="5"/>
+            <column name="locale" type="varchar" not-null="true" size="255"/>
+            <column name="image" type="varchar" not-null="true" size="64"/>
+            <column name="directory" type="varchar" not-null="true" size="32"/>
+            <column name="sort_order" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="status" type="bit" not-null="true"/>
+            <index name="name" column="name"/>
+        </table>
+        <table name="oc_layout">
+            <pk name="PRIMARY" column="layout_id"/>
+            <column name="layout_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="64"/>
+        </table>
+        <table name="oc_layout_module">
+            <pk name="PRIMARY" column="layout_module_id"/>
+            <column name="layout_module_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="layout_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="code" type="varchar" not-null="true" size="64"/>
+            <column name="position" type="varchar" not-null="true" size="14"/>
+            <column name="sort_order" type="integer" type-name="INT" not-null="true" size="10"/>
+        </table>
+        <table name="oc_layout_route">
+            <pk name="PRIMARY" column="layout_route_id"/>
+            <column name="layout_route_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="layout_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="store_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="route" type="varchar" not-null="true" size="64"/>
+        </table>
+        <table name="oc_length_class">
+            <pk name="PRIMARY" column="length_class_id"/>
+            <column name="length_class_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="value" type="decimal" not-null="true" size="15" decimal-digits="8"/>
+        </table>
+        <table name="oc_length_class_description">
+            <pk name="PRIMARY">
+                <on column="language_id"/>
+                <on column="length_class_id"/>
+            </pk>
+            <column name="length_class_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="language_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="title" type="varchar" not-null="true" size="32"/>
+            <column name="unit" type="varchar" not-null="true" size="4"/>
+        </table>
+        <table name="oc_location">
+            <pk name="PRIMARY" column="location_id"/>
+            <column name="location_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="32"/>
+            <column name="address" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="telephone" type="varchar" not-null="true" size="32"/>
+            <column name="fax" type="varchar" not-null="true" size="32"/>
+            <column name="geocode" type="varchar" not-null="true" size="32"/>
+            <column name="image" type="varchar" size="255"/>
+            <column name="open" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="comment" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <index name="name" column="name"/>
+        </table>
+        <table name="oc_manufacturer">
+            <pk name="PRIMARY" column="manufacturer_id"/>
+            <column name="manufacturer_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="64"/>
+            <column name="image" type="varchar" size="255"/>
+            <column name="sort_order" type="integer" type-name="INT" not-null="true" size="10"/>
+        </table>
+        <table name="oc_manufacturer_to_store">
+            <pk name="PRIMARY">
+                <on column="manufacturer_id"/>
+                <on column="store_id"/>
+            </pk>
+            <column name="manufacturer_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="store_id" type="integer" type-name="INT" not-null="true" size="10"/>
+        </table>
+        <table name="oc_marketing">
+            <pk name="PRIMARY" column="marketing_id"/>
+            <column name="marketing_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="32"/>
+            <column name="description" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="code" type="varchar" not-null="true" size="64"/>
+            <column name="clicks" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_menu">
+            <pk name="PRIMARY" column="menu_id"/>
+            <column name="menu_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="store_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="type" type="varchar" not-null="true" size="6"/>
+            <column name="link" type="varchar" not-null="true" size="255"/>
+            <column name="sort_order" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="status" type="bit" not-null="true"/>
+        </table>
+        <table name="oc_menu_description">
+            <pk name="PRIMARY">
+                <on column="language_id"/>
+                <on column="menu_id"/>
+            </pk>
+            <column name="menu_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="language_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="64"/>
+        </table>
+        <table name="oc_menu_module">
+            <pk name="PRIMARY" column="menu_module_id"/>
+            <column name="menu_module_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="menu_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="code" type="varchar" not-null="true" size="64"/>
+            <column name="sort_order" type="integer" type-name="INT" not-null="true" size="10"/>
+            <index name="menu_id" column="menu_id"/>
+        </table>
+        <table name="oc_modification">
+            <pk name="PRIMARY" column="modification_id"/>
+            <column name="modification_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="64"/>
+            <column name="code" type="varchar" not-null="true" size="64"/>
+            <column name="author" type="varchar" not-null="true" size="64"/>
+            <column name="version" type="varchar" not-null="true" size="32"/>
+            <column name="link" type="varchar" not-null="true" size="255"/>
+            <column name="xml" type="longvarchar" type-name="MEDIUMTEXT" not-null="true" size="16777215"/>
+            <column name="status" type="bit" not-null="true"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_module">
+            <pk name="PRIMARY" column="module_id"/>
+            <column name="module_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="64"/>
+            <column name="code" type="varchar" not-null="true" size="32"/>
+            <column name="setting" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+        </table>
+        <table name="oc_option">
+            <pk name="PRIMARY" column="option_id"/>
+            <column name="option_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="type" type="varchar" not-null="true" size="32"/>
+            <column name="sort_order" type="integer" type-name="INT" not-null="true" size="10"/>
+        </table>
+        <table name="oc_option_description">
+            <pk name="PRIMARY">
+                <on column="language_id"/>
+                <on column="option_id"/>
+            </pk>
+            <column name="option_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="language_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="128"/>
+        </table>
+        <table name="oc_option_value">
+            <pk name="PRIMARY" column="option_value_id"/>
+            <column name="option_value_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="option_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="image" type="varchar" not-null="true" size="255"/>
+            <column name="sort_order" type="integer" type-name="INT" not-null="true" size="10"/>
+        </table>
+        <table name="oc_option_value_description">
+            <pk name="PRIMARY">
+                <on column="language_id"/>
+                <on column="option_value_id"/>
+            </pk>
+            <column name="option_value_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="language_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="option_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="128"/>
+        </table>
+        <table name="oc_order">
+            <pk name="PRIMARY" column="order_id"/>
+            <column name="order_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="invoice_no" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="invoice_prefix" type="varchar" not-null="true" size="26"/>
+            <column name="store_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="store_name" type="varchar" not-null="true" size="64"/>
+            <column name="store_url" type="varchar" not-null="true" size="255"/>
+            <column name="customer_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="customer_group_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="firstname" type="varchar" not-null="true" size="32"/>
+            <column name="lastname" type="varchar" not-null="true" size="32"/>
+            <column name="email" type="varchar" not-null="true" size="96"/>
+            <column name="telephone" type="varchar" not-null="true" size="32"/>
+            <column name="fax" type="varchar" not-null="true" size="32"/>
+            <column name="custom_field" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="payment_firstname" type="varchar" not-null="true" size="32"/>
+            <column name="payment_lastname" type="varchar" not-null="true" size="32"/>
+            <column name="payment_company" type="varchar" not-null="true" size="60"/>
+            <column name="payment_address_1" type="varchar" not-null="true" size="128"/>
+            <column name="payment_address_2" type="varchar" not-null="true" size="128"/>
+            <column name="payment_city" type="varchar" not-null="true" size="128"/>
+            <column name="payment_postcode" type="varchar" not-null="true" size="10"/>
+            <column name="payment_country" type="varchar" not-null="true" size="128"/>
+            <column name="payment_country_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="payment_zone" type="varchar" not-null="true" size="128"/>
+            <column name="payment_zone_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="payment_address_format" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="payment_custom_field" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="payment_method" type="varchar" not-null="true" size="128"/>
+            <column name="payment_code" type="varchar" not-null="true" size="128"/>
+            <column name="shipping_firstname" type="varchar" not-null="true" size="32"/>
+            <column name="shipping_lastname" type="varchar" not-null="true" size="32"/>
+            <column name="shipping_company" type="varchar" not-null="true" size="60"/>
+            <column name="shipping_address_1" type="varchar" not-null="true" size="128"/>
+            <column name="shipping_address_2" type="varchar" not-null="true" size="128"/>
+            <column name="shipping_city" type="varchar" not-null="true" size="128"/>
+            <column name="shipping_postcode" type="varchar" not-null="true" size="10"/>
+            <column name="shipping_country" type="varchar" not-null="true" size="128"/>
+            <column name="shipping_country_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="shipping_zone" type="varchar" not-null="true" size="128"/>
+            <column name="shipping_zone_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="shipping_address_format" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="shipping_custom_field" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="shipping_method" type="varchar" not-null="true" size="128"/>
+            <column name="shipping_code" type="varchar" not-null="true" size="128"/>
+            <column name="comment" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="total" type="decimal" not-null="true" default="0.0000" size="15" decimal-digits="4"/>
+            <column name="order_status_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="affiliate_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="commission" type="decimal" not-null="true" size="15" decimal-digits="4"/>
+            <column name="marketing_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="tracking" type="varchar" not-null="true" size="64"/>
+            <column name="language_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="currency_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="currency_code" type="varchar" not-null="true" size="3"/>
+            <column name="currency_value" type="decimal" not-null="true" default="1.00000000" size="15" decimal-digits="8"/>
+            <column name="ip" type="varchar" not-null="true" size="40"/>
+            <column name="forwarded_ip" type="varchar" not-null="true" size="40"/>
+            <column name="user_agent" type="varchar" not-null="true" size="255"/>
+            <column name="accept_language" type="varchar" not-null="true" size="255"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+            <column name="date_modified" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_order_custom_field">
+            <pk name="PRIMARY" column="order_custom_field_id"/>
+            <column name="order_custom_field_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="order_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="custom_field_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="custom_field_value_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="255"/>
+            <column name="value" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="type" type="varchar" not-null="true" size="32"/>
+            <column name="location" type="varchar" not-null="true" size="16"/>
+        </table>
+        <table name="oc_order_history">
+            <pk name="PRIMARY" column="order_history_id"/>
+            <column name="order_history_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="order_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="order_status_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="notify" type="bit" not-null="true"/>
+            <column name="comment" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_order_option">
+            <pk name="PRIMARY" column="order_option_id"/>
+            <column name="order_option_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="order_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="order_product_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="product_option_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="product_option_value_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="255"/>
+            <column name="value" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="type" type="varchar" not-null="true" size="32"/>
+        </table>
+        <table name="oc_order_product">
+            <pk name="PRIMARY" column="order_product_id"/>
+            <column name="order_product_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="order_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="product_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="255"/>
+            <column name="model" type="varchar" not-null="true" size="64"/>
+            <column name="quantity" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="price" type="decimal" not-null="true" default="0.0000" size="15" decimal-digits="4"/>
+            <column name="total" type="decimal" not-null="true" default="0.0000" size="15" decimal-digits="4"/>
+            <column name="tax" type="decimal" not-null="true" default="0.0000" size="15" decimal-digits="4"/>
+            <column name="reward" type="integer" type-name="INT" not-null="true" size="10"/>
+        </table>
+        <table name="oc_order_recurring">
+            <pk name="PRIMARY" column="order_recurring_id"/>
+            <column name="order_recurring_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="order_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="reference" type="varchar" not-null="true" size="255"/>
+            <column name="product_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="product_name" type="varchar" not-null="true" size="255"/>
+            <column name="product_quantity" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="recurring_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="recurring_name" type="varchar" not-null="true" size="255"/>
+            <column name="recurring_description" type="varchar" not-null="true" size="255"/>
+            <column name="recurring_frequency" type="varchar" not-null="true" size="25"/>
+            <column name="recurring_cycle" type="smallint" not-null="true" size="5"/>
+            <column name="recurring_duration" type="smallint" not-null="true" size="5"/>
+            <column name="recurring_price" type="decimal" not-null="true" size="10" decimal-digits="4"/>
+            <column name="trial" type="bit" not-null="true"/>
+            <column name="trial_frequency" type="varchar" not-null="true" size="25"/>
+            <column name="trial_cycle" type="smallint" not-null="true" size="5"/>
+            <column name="trial_duration" type="smallint" not-null="true" size="5"/>
+            <column name="trial_price" type="decimal" not-null="true" size="10" decimal-digits="4"/>
+            <column name="status" type="tinyint" not-null="true" size="3"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_order_recurring_transaction">
+            <pk name="PRIMARY" column="order_recurring_transaction_id"/>
+            <column name="order_recurring_transaction_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="order_recurring_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="reference" type="varchar" not-null="true" size="255"/>
+            <column name="type" type="varchar" not-null="true" size="255"/>
+            <column name="amount" type="decimal" not-null="true" size="10" decimal-digits="4"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_order_status">
+            <pk name="PRIMARY">
+                <on column="language_id"/>
+                <on column="order_status_id"/>
+            </pk>
+            <column name="order_status_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="language_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="32"/>
+        </table>
+        <table name="oc_order_total">
+            <pk name="PRIMARY" column="order_total_id"/>
+            <column name="order_total_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="order_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="code" type="varchar" not-null="true" size="32"/>
+            <column name="title" type="varchar" not-null="true" size="255"/>
+            <column name="value" type="decimal" not-null="true" default="0.0000" size="15" decimal-digits="4"/>
+            <column name="sort_order" type="integer" type-name="INT" not-null="true" size="10"/>
+            <index name="order_id" column="order_id"/>
+        </table>
+        <table name="oc_order_voucher">
+            <pk name="PRIMARY" column="order_voucher_id"/>
+            <column name="order_voucher_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="order_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="voucher_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="description" type="varchar" not-null="true" size="255"/>
+            <column name="code" type="varchar" not-null="true" size="10"/>
+            <column name="from_name" type="varchar" not-null="true" size="64"/>
+            <column name="from_email" type="varchar" not-null="true" size="96"/>
+            <column name="to_name" type="varchar" not-null="true" size="64"/>
+            <column name="to_email" type="varchar" not-null="true" size="96"/>
+            <column name="voucher_theme_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="message" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="amount" type="decimal" not-null="true" size="15" decimal-digits="4"/>
+        </table>
+        <table name="oc_product">
+            <pk name="PRIMARY" column="product_id"/>
+            <column name="product_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="model" type="varchar" not-null="true" size="64"/>
+            <column name="sku" type="varchar" not-null="true" size="64"/>
+            <column name="upc" type="varchar" not-null="true" size="12"/>
+            <column name="ean" type="varchar" not-null="true" size="14"/>
+            <column name="jan" type="varchar" not-null="true" size="13"/>
+            <column name="isbn" type="varchar" not-null="true" size="17"/>
+            <column name="mpn" type="varchar" not-null="true" size="64"/>
+            <column name="location" type="varchar" not-null="true" size="128"/>
+            <column name="quantity" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="stock_status_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="image" type="varchar" size="255"/>
+            <column name="manufacturer_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="shipping" type="bit" not-null="true" default="1"/>
+            <column name="price" type="decimal" not-null="true" default="0.0000" size="15" decimal-digits="4"/>
+            <column name="points" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="tax_class_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="date_available" type="date" not-null="true" default="0000-00-00" size="10"/>
+            <column name="weight" type="decimal" not-null="true" default="0.00000000" size="15" decimal-digits="8"/>
+            <column name="weight_class_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="length" type="decimal" not-null="true" default="0.00000000" size="15" decimal-digits="8"/>
+            <column name="width" type="decimal" not-null="true" default="0.00000000" size="15" decimal-digits="8"/>
+            <column name="height" type="decimal" not-null="true" default="0.00000000" size="15" decimal-digits="8"/>
+            <column name="length_class_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="subtract" type="bit" not-null="true" default="1"/>
+            <column name="minimum" type="integer" type-name="INT" not-null="true" default="1" size="10"/>
+            <column name="sort_order" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="status" type="bit" not-null="true"/>
+            <column name="viewed" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+            <column name="date_modified" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_product_attribute">
+            <pk name="PRIMARY">
+                <on column="attribute_id"/>
+                <on column="language_id"/>
+                <on column="product_id"/>
+            </pk>
+            <column name="product_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="attribute_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="language_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="text" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+        </table>
+        <table name="oc_product_description">
+            <pk name="PRIMARY">
+                <on column="language_id"/>
+                <on column="product_id"/>
+            </pk>
+            <column name="product_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="language_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="255"/>
+            <column name="description" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="tag" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="meta_title" type="varchar" not-null="true" size="255"/>
+            <column name="meta_description" type="varchar" not-null="true" size="255"/>
+            <column name="meta_keyword" type="varchar" not-null="true" size="255"/>
+            <index name="name" column="name"/>
+        </table>
+        <table name="oc_product_discount">
+            <pk name="PRIMARY" column="product_discount_id"/>
+            <column name="product_discount_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="product_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="customer_group_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="quantity" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="priority" type="integer" type-name="INT" not-null="true" default="1" size="10"/>
+            <column name="price" type="decimal" not-null="true" default="0.0000" size="15" decimal-digits="4"/>
+            <column name="date_start" type="date" not-null="true" default="0000-00-00" size="10"/>
+            <column name="date_end" type="date" not-null="true" default="0000-00-00" size="10"/>
+            <index name="product_id" column="product_id"/>
+        </table>
+        <table name="oc_product_filter">
+            <pk name="PRIMARY">
+                <on column="filter_id"/>
+                <on column="product_id"/>
+            </pk>
+            <column name="product_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="filter_id" type="integer" type-name="INT" not-null="true" size="10"/>
+        </table>
+        <table name="oc_product_image">
+            <pk name="PRIMARY" column="product_image_id"/>
+            <column name="product_image_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="product_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="image" type="varchar" size="255"/>
+            <column name="sort_order" type="integer" type-name="INT" not-null="true" size="10"/>
+            <index name="product_id" column="product_id"/>
+        </table>
+        <table name="oc_product_option">
+            <pk name="PRIMARY" column="product_option_id"/>
+            <column name="product_option_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="product_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="option_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="value" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="required" type="bit" not-null="true"/>
+        </table>
+        <table name="oc_product_option_value">
+            <pk name="PRIMARY" column="product_option_value_id"/>
+            <column name="product_option_value_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="product_option_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="product_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="option_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="option_value_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="quantity" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="subtract" type="bit" not-null="true"/>
+            <column name="price" type="decimal" not-null="true" size="15" decimal-digits="4"/>
+            <column name="price_prefix" type="varchar" not-null="true" size="1"/>
+            <column name="points" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="points_prefix" type="varchar" not-null="true" size="1"/>
+            <column name="weight" type="decimal" not-null="true" size="15" decimal-digits="8"/>
+            <column name="weight_prefix" type="varchar" not-null="true" size="1"/>
+        </table>
+        <table name="oc_product_recurring">
+            <pk name="PRIMARY">
+                <on column="customer_group_id"/>
+                <on column="product_id"/>
+                <on column="recurring_id"/>
+            </pk>
+            <column name="product_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="recurring_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="customer_group_id" type="integer" type-name="INT" not-null="true" size="10"/>
+        </table>
+        <table name="oc_product_related">
+            <pk name="PRIMARY">
+                <on column="product_id"/>
+                <on column="related_id"/>
+            </pk>
+            <column name="product_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="related_id" type="integer" type-name="INT" not-null="true" size="10"/>
+        </table>
+        <table name="oc_product_reward">
+            <pk name="PRIMARY" column="product_reward_id"/>
+            <column name="product_reward_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="product_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="customer_group_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="points" type="integer" type-name="INT" not-null="true" size="10"/>
+        </table>
+        <table name="oc_product_special">
+            <pk name="PRIMARY" column="product_special_id"/>
+            <column name="product_special_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="product_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="customer_group_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="priority" type="integer" type-name="INT" not-null="true" default="1" size="10"/>
+            <column name="price" type="decimal" not-null="true" default="0.0000" size="15" decimal-digits="4"/>
+            <column name="date_start" type="date" not-null="true" default="0000-00-00" size="10"/>
+            <column name="date_end" type="date" not-null="true" default="0000-00-00" size="10"/>
+            <index name="product_id" column="product_id"/>
+        </table>
+        <table name="oc_product_to_category">
+            <pk name="PRIMARY">
+                <on column="category_id"/>
+                <on column="product_id"/>
+            </pk>
+            <column name="product_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="category_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <index name="category_id" column="category_id"/>
+        </table>
+        <table name="oc_product_to_download">
+            <pk name="PRIMARY">
+                <on column="download_id"/>
+                <on column="product_id"/>
+            </pk>
+            <column name="product_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="download_id" type="integer" type-name="INT" not-null="true" size="10"/>
+        </table>
+        <table name="oc_product_to_layout">
+            <pk name="PRIMARY">
+                <on column="product_id"/>
+                <on column="store_id"/>
+            </pk>
+            <column name="product_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="store_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="layout_id" type="integer" type-name="INT" not-null="true" size="10"/>
+        </table>
+        <table name="oc_product_to_store">
+            <pk name="PRIMARY">
+                <on column="product_id"/>
+                <on column="store_id"/>
+            </pk>
+            <column name="product_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="store_id" type="integer" type-name="INT" not-null="true" size="10"/>
+        </table>
+        <table name="oc_recurring">
+            <pk name="PRIMARY" column="recurring_id"/>
+            <column name="recurring_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="price" type="decimal" not-null="true" size="10" decimal-digits="4"/>
+            <column name="frequency" type="char" type-name="ENUM" not-null="true" size="10"/>
+            <column name="duration" type="integer" type-name="INT UNSIGNED" not-null="true" size="10"/>
+            <column name="cycle" type="integer" type-name="INT UNSIGNED" not-null="true" size="10"/>
+            <column name="trial_status" type="tinyint" not-null="true" size="3"/>
+            <column name="trial_price" type="decimal" not-null="true" size="10" decimal-digits="4"/>
+            <column name="trial_frequency" type="char" type-name="ENUM" not-null="true" size="10"/>
+            <column name="trial_duration" type="integer" type-name="INT UNSIGNED" not-null="true" size="10"/>
+            <column name="trial_cycle" type="integer" type-name="INT UNSIGNED" not-null="true" size="10"/>
+            <column name="status" type="tinyint" not-null="true" size="3"/>
+            <column name="sort_order" type="integer" type-name="INT" not-null="true" size="10"/>
+        </table>
+        <table name="oc_recurring_description">
+            <pk name="PRIMARY">
+                <on column="language_id"/>
+                <on column="recurring_id"/>
+            </pk>
+            <column name="recurring_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="language_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="255"/>
+        </table>
+        <table name="oc_return">
+            <pk name="PRIMARY" column="return_id"/>
+            <column name="return_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="order_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="product_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="customer_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="firstname" type="varchar" not-null="true" size="32"/>
+            <column name="lastname" type="varchar" not-null="true" size="32"/>
+            <column name="email" type="varchar" not-null="true" size="96"/>
+            <column name="telephone" type="varchar" not-null="true" size="32"/>
+            <column name="product" type="varchar" not-null="true" size="255"/>
+            <column name="model" type="varchar" not-null="true" size="64"/>
+            <column name="quantity" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="opened" type="bit" not-null="true"/>
+            <column name="return_reason_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="return_action_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="return_status_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="comment" type="longvarchar" type-name="TEXT" size="65535"/>
+            <column name="date_ordered" type="date" not-null="true" default="0000-00-00" size="10"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+            <column name="date_modified" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_return_action">
+            <pk name="PRIMARY">
+                <on column="language_id"/>
+                <on column="return_action_id"/>
+            </pk>
+            <column name="return_action_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="language_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="64"/>
+        </table>
+        <table name="oc_return_history">
+            <pk name="PRIMARY" column="return_history_id"/>
+            <column name="return_history_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="return_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="return_status_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="notify" type="bit" not-null="true"/>
+            <column name="comment" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_return_reason">
+            <pk name="PRIMARY">
+                <on column="language_id"/>
+                <on column="return_reason_id"/>
+            </pk>
+            <column name="return_reason_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="language_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="128"/>
+        </table>
+        <table name="oc_return_status">
+            <pk name="PRIMARY">
+                <on column="language_id"/>
+                <on column="return_status_id"/>
+            </pk>
+            <column name="return_status_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="language_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="32"/>
+        </table>
+        <table name="oc_review">
+            <pk name="PRIMARY" column="review_id"/>
+            <column name="review_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="product_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="customer_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="author" type="varchar" not-null="true" size="64"/>
+            <column name="text" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="rating" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="status" type="bit" not-null="true"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+            <column name="date_modified" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+            <index name="product_id" column="product_id"/>
+        </table>
+        <table name="oc_setting">
+            <pk name="PRIMARY" column="setting_id"/>
+            <column name="setting_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="store_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="code" type="varchar" not-null="true" size="32"/>
+            <column name="key" type="varchar" not-null="true" size="64"/>
+            <column name="value" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="serialized" type="bit" not-null="true"/>
+        </table>
+        <table name="oc_stock_status">
+            <pk name="PRIMARY">
+                <on column="language_id"/>
+                <on column="stock_status_id"/>
+            </pk>
+            <column name="stock_status_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="language_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="32"/>
+        </table>
+        <table name="oc_store">
+            <pk name="PRIMARY" column="store_id"/>
+            <column name="store_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="64"/>
+            <column name="url" type="varchar" not-null="true" size="255"/>
+            <column name="ssl" type="varchar" not-null="true" size="255"/>
+        </table>
+        <table name="oc_tax_class">
+            <pk name="PRIMARY" column="tax_class_id"/>
+            <column name="tax_class_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="title" type="varchar" not-null="true" size="32"/>
+            <column name="description" type="varchar" not-null="true" size="255"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+            <column name="date_modified" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_tax_rate">
+            <pk name="PRIMARY" column="tax_rate_id"/>
+            <column name="tax_rate_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="geo_zone_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="32"/>
+            <column name="rate" type="decimal" not-null="true" default="0.0000" size="15" decimal-digits="4"/>
+            <column name="type" type="char" not-null="true" size="1"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+            <column name="date_modified" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_tax_rate_to_customer_group">
+            <pk name="PRIMARY">
+                <on column="customer_group_id"/>
+                <on column="tax_rate_id"/>
+            </pk>
+            <column name="tax_rate_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="customer_group_id" type="integer" type-name="INT" not-null="true" size="10"/>
+        </table>
+        <table name="oc_tax_rule">
+            <pk name="PRIMARY" column="tax_rule_id"/>
+            <column name="tax_rule_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="tax_class_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="tax_rate_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="based" type="varchar" not-null="true" size="10"/>
+            <column name="priority" type="integer" type-name="INT" not-null="true" default="1" size="10"/>
+        </table>
+        <table name="oc_theme">
+            <pk name="PRIMARY" column="theme_id"/>
+            <column name="theme_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="store_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="theme" type="varchar" not-null="true" size="64"/>
+            <column name="route" type="varchar" not-null="true" size="64"/>
+            <column name="code" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+        </table>
+        <table name="oc_translation">
+            <pk name="PRIMARY" column="translation_id"/>
+            <column name="translation_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="store_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="language_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="route" type="varchar" not-null="true" size="64"/>
+            <column name="key" type="varchar" not-null="true" size="64"/>
+            <column name="value" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+        </table>
+        <table name="oc_upload">
+            <pk name="PRIMARY" column="upload_id"/>
+            <column name="upload_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="255"/>
+            <column name="filename" type="varchar" not-null="true" size="255"/>
+            <column name="code" type="varchar" not-null="true" size="255"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_url_alias">
+            <pk name="PRIMARY" column="url_alias_id"/>
+            <column name="url_alias_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="query" type="varchar" not-null="true" size="255"/>
+            <column name="keyword" type="varchar" not-null="true" size="255"/>
+            <index name="keyword" column="keyword"/>
+            <index name="query" column="query"/>
+        </table>
+        <table name="oc_user">
+            <pk name="PRIMARY" column="user_id"/>
+            <column name="user_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="user_group_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="username" type="varchar" not-null="true" size="20"/>
+            <column name="password" type="varchar" not-null="true" size="40"/>
+            <column name="salt" type="varchar" not-null="true" size="9"/>
+            <column name="firstname" type="varchar" not-null="true" size="32"/>
+            <column name="lastname" type="varchar" not-null="true" size="32"/>
+            <column name="email" type="varchar" not-null="true" size="96"/>
+            <column name="image" type="varchar" not-null="true" size="255"/>
+            <column name="code" type="varchar" not-null="true" size="40"/>
+            <column name="ip" type="varchar" not-null="true" size="40"/>
+            <column name="status" type="bit" not-null="true"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_user_group">
+            <pk name="PRIMARY" column="user_group_id"/>
+            <column name="user_group_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="64"/>
+            <column name="permission" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+        </table>
+        <table name="oc_voucher">
+            <pk name="PRIMARY" column="voucher_id"/>
+            <column name="voucher_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="order_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="code" type="varchar" not-null="true" size="10"/>
+            <column name="from_name" type="varchar" not-null="true" size="64"/>
+            <column name="from_email" type="varchar" not-null="true" size="96"/>
+            <column name="to_name" type="varchar" not-null="true" size="64"/>
+            <column name="to_email" type="varchar" not-null="true" size="96"/>
+            <column name="voucher_theme_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="message" type="longvarchar" type-name="TEXT" not-null="true" size="65535"/>
+            <column name="amount" type="decimal" not-null="true" size="15" decimal-digits="4"/>
+            <column name="status" type="bit" not-null="true"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_voucher_history">
+            <pk name="PRIMARY" column="voucher_history_id"/>
+            <column name="voucher_history_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="voucher_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="order_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="amount" type="decimal" not-null="true" size="15" decimal-digits="4"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+        <table name="oc_voucher_theme">
+            <pk name="PRIMARY" column="voucher_theme_id"/>
+            <column name="voucher_theme_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="image" type="varchar" not-null="true" size="255"/>
+        </table>
+        <table name="oc_voucher_theme_description">
+            <pk name="PRIMARY">
+                <on column="language_id"/>
+                <on column="voucher_theme_id"/>
+            </pk>
+            <column name="voucher_theme_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="language_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="32"/>
+        </table>
+        <table name="oc_weight_class">
+            <pk name="PRIMARY" column="weight_class_id"/>
+            <column name="weight_class_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="value" type="decimal" not-null="true" default="0.00000000" size="15" decimal-digits="8"/>
+        </table>
+        <table name="oc_weight_class_description">
+            <pk name="PRIMARY">
+                <on column="language_id"/>
+                <on column="weight_class_id"/>
+            </pk>
+            <column name="weight_class_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="language_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="title" type="varchar" not-null="true" size="32"/>
+            <column name="unit" type="varchar" not-null="true" size="4"/>
+        </table>
+        <table name="oc_zone">
+            <pk name="PRIMARY" column="zone_id"/>
+            <column name="zone_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="country_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="name" type="varchar" not-null="true" size="128"/>
+            <column name="code" type="varchar" not-null="true" size="32"/>
+            <column name="status" type="bit" not-null="true" default="1"/>
+        </table>
+        <table name="oc_zone_to_geo_zone">
+            <pk name="PRIMARY" column="zone_to_geo_zone_id"/>
+            <column name="zone_to_geo_zone_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="country_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="zone_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="geo_zone_id" type="integer" type-name="INT" not-null="true" size="10"/>
+            <column name="date_added" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+            <column name="date_modified" type="timestamp" type-name="DATETIME" not-null="true" size="19"/>
+        </table>
+    </schema>
+</schemas>
