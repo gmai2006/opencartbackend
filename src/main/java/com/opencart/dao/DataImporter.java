@@ -198,7 +198,7 @@ public class DataImporter {
 		special.setDateStart(d);
 		special.setDateEnd(future);
 		special.setPrice(4.5F);
-		 dao.create(special);
+		dao.create(special);
 		return cat;
 	}
 	
