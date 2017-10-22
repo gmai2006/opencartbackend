@@ -1,0 +1,2 @@
+$this->db->query("INSERT INTO`".DB_PREFIX."etsy_order_lock` SET `order_id` = '".(int)$order_id."'")
+need extra space after INSERT INTO

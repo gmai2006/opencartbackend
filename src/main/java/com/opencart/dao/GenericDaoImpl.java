@@ -1,5 +1,8 @@
 package com.opencart.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -28,6 +31,12 @@ public class GenericDaoImpl implements GenericDao {
 
     public <E> E update(E e) {
         return em.merge(e);
+    }
+    
+    public <E> List<E> selectAll(String query) {
+    	List<E> result = new ArrayList<E>();
+    	em.createQuery(query);
+    	return result;
     }
 
 }

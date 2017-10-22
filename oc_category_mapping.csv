@@ -1,0 +1,9 @@
+category_id=INT
+image=VARCHAR
+parent_id=INT
+top=BIT
+column=INT
+sort_order=INT
+status=BIT
+date_added=DATETIME
+date_modified=DATETIME

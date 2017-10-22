@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
-import com.opencart.dao.DataImporter;
+import com.opencart.dao.DataInitializer;
 
 import junit.framework.Assert;
 

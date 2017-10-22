@@ -3157,8 +3157,8 @@ INSERT INTO `oc_setting` (`store_id`, `code`, `key`, `value`, `serialized`) VALU
 (0, 'config', 'config_ftp_username', '', 0),
 (0, 'config', 'config_ftp_port', '21', 0),
 (0, 'config', 'config_ftp_hostname', '', 0),
-(0, 'config', 'config_meta_title', 'Your Store', 0),
-(0, 'config', 'config_meta_description', 'My Store', 0),
+(0, 'config', 'config_meta_title', 'Quilling Artist', 0),
+(0, 'config', 'config_meta_description', 'Quilling Greeting Cards', 0),
 (0, 'config', 'config_meta_keyword', '', 0),
 (0, 'config', 'config_theme', 'theme_default', 0),
 (0, 'config', 'config_layout_id', '4', 0),
@@ -3209,12 +3209,12 @@ INSERT INTO `oc_setting` (`store_id`, `code`, `key`, `value`, `serialized`) VALU
 (0, 'config', 'config_open', '', 0),
 (0, 'config', 'config_image', '', 0),
 (0, 'config', 'config_fax', '', 0),
-(0, 'config', 'config_telephone', '123456789', 0),
-(0, 'config', 'config_email', 'demo@opencart.com', 0),
+(0, 'config', 'config_telephone', '4254440244', 0),
+(0, 'config', 'config_email', 'support@quillingartist.com', 0),
 (0, 'config', 'config_geocode', '', 0),
 (0, 'config', 'config_owner', 'Your Name', 0),
 (0, 'config', 'config_address', 'Address 1', 0),
-(0, 'config', 'config_name', 'Your Store', 0),
+(0, 'config', 'config_name', 'Quilling Artist', 0),
 (0, 'config', 'config_seo_url', '0', 0),
 (0, 'config', 'config_file_max_size', '300000', 0),
 (0, 'config', 'config_file_ext_allowed', 'zip\r\ntxt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc', 0),
@@ -3319,6 +3319,11 @@ INSERT INTO `oc_setting` (`store_id`, `code`, `key`, `value`, `serialized`) VALU
 (0, 'dashboard_recent', 'dashboard_recent_width', '8', 0);
 
 -- --------------------------------------------------------
+
+update oc_setting set value='Quilling Artist' where key='config_meta_title';
+update oc_setting set value='Quilling Artist Greeting Cards' where key='config_meta_description';
+update oc_setting set value='425 444-0244' where key='config_telephone';
+update oc_setting set value='support@quillingartist.com' where key='config_email';
 
 --
 -- Table structure for table `oc_stock_status`

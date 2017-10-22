@@ -12,4 +12,4 @@ Mother\u0020Day=motherday
 Congratulation=congratulation
 Valentine=love
 Baby=baby
-Scenary=seattle
+Scenery=seattle

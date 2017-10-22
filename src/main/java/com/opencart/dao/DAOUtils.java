@@ -32,7 +32,7 @@ public class DAOUtils {
 	public static Map<String, Integer> buildProductMap(List<OcProduct> products) {
 		return products.stream()
 		.collect(Collectors.toMap(
-				e -> (String) e.getModel().toLowerCase(),
+				e -> (String) e.getModel().toLowerCase().replace(" ", "_"),
 				e -> (Integer) e.getProductId()
 			));
 	}

@@ -1,13 +1,9 @@
-create database opencart;
-
-GRANT ALL PRIVILEGES ON opencart.* TO 'opencart_ower'@'%' IDENTIFIED BY '$eattle2006$$' WITH GRANT OPTION;
-GRANT ALL PRIVILEGES ON greeting_card.* TO 'greetingcard_owner'@'%' IDENTIFIED BY '$eattle2006$$' WITH GRANT OPTION;
-GRANT ALL PRIVILEGES ON opencart2.* TO 'greetingcard_owner'@'%' IDENTIFIED BY '$eattle2006$$' WITH GRANT OPTION;
-
 truncate table oc_category;
 truncate table oc_category_description;
 truncate table oc_category_path;
 truncate table oc_category_to_store;
+truncate table oc_manufacturer;
+truncate table oc_manufacturer_to_store;
 
 truncate table oc_product;
 truncate table oc_product_description;
